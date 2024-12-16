@@ -824,6 +824,10 @@ fn system_deps_install_script(
         }
     }
 
+    if required_wrappers.contains(&CargoBuildWrapper::Cross) {
+        lines.push("cargo install cross --git https://github.com/cross-rs/cross.git --locked --rev 4090beca; ".to_owned());
+    }
+
     let mut pip_pkgs: SortedSet<PipPackageName> = Default::default();
     if required_wrappers.contains(&CargoBuildWrapper::ZigBuild) {
         pip_pkgs.insert(PipPackageName::new("cargo-zigbuild".to_owned()));
