@@ -10,7 +10,9 @@ exclude = ["axoproject/tests/projects/"]
 [workspace.package]
 edition = "2021"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/axodotdev/cargo-dist"
+# repository = "https://github.com/axodotdev/cargo-dist"
+# todo: we don't want to edit it but cargo-dist requires
+repository = "https://github.com/Myriad-Dreamin/cargo-dist"
 homepage = "https://opensource.axo.dev/cargo-dist/"
 version = "0.26.1-tinymist.5"
 rust-version = "1.74"
