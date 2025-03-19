@@ -27,6 +27,8 @@ install-updater = false
 github-attestations = true
 # Path that installers should place binaries in
 install-path = "CARGO_HOME"
+# Whether CI should trigger releases with dispatches instead of tag pushes
+dispatch-releases = true
 
 [[dist.extra-artifacts]]
 artifacts = ["dist-manifest-schema.json"]
