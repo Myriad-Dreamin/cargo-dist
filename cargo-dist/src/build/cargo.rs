@@ -4,7 +4,7 @@ use std::env;
 
 use axoprocess::Cmd;
 use axoproject::WorkspaceIdx;
-use cargo_dist_schema::target_lexicon::{Architecture, Environment, Triple};
+use cargo_dist_schema::target_lexicon::{Architecture, Environment, OperatingSystem, Triple};
 use cargo_dist_schema::{DistManifest, TripleName};
 use miette::{Context, IntoDiagnostic};
 use tracing::warn;
@@ -190,6 +190,13 @@ pub fn make_build_cargo_target_command(
         None => {
             command.arg("build");
         }
+        Some(CargoBuildWrapper::Cross) => {
+            command = Cmd::new("cross", "build your app with Cross");
+            if auditable {
+                command.arg("auditable");
+            }
+            command.arg("build");
+        }
         Some(CargoBuildWrapper::ZigBuild) => {
             if auditable {
                 return Err(DistError::CannotDoCargoAuditableAndCrossCompile {
@@ -283,6 +290,24 @@ pub fn build_cargo_target(
 
     let mut expected = BuildExpectations::new(dist_graph, &step.expected_binaries);
 
+    let target: Triple = step.target_triple.parse()?;
+    let mut messages_read = None;
+    let is_loongarch64 = matches!(target.architecture, Architecture::LoongArch64);
+    if matches!(
+        (
+            target.architecture,
+            target.operating_system,
+            host.operating_system
+        ),
+        (
+            Architecture::LoongArch64,
+            OperatingSystem::Linux,
+            OperatingSystem::Linux
+        )
+    ) {
+        messages_read = Some(vec![]);
+    }
+
     // Collect up the compiler messages to find out where binaries ended up
     let reader = std::io::BufReader::new(task.stdout.take().unwrap());
     for message in cargo_metadata::Message::parse_stream(reader) {
@@ -291,10 +316,16 @@ pub fn build_cargo_target(
             .wrap_err("failed to parse cargo json message")
             .map_err(|e| warn!("{:?}", e))
         else {
+            if let Some(messages_read) = messages_read.as_mut() {
+                messages_read.push(cargo_metadata::Message::TextLine("bad message".to_string()));
+            }
             // It's ok for there to be messages we don't understand if we don't care about them.
             // At the end we'll check if we got the messages we *do* need.
             continue;
         };
+        if let Some(messages_read) = messages_read.as_mut() {
+            messages_read.push(message.clone());
+        }
         match message {
             cargo_metadata::Message::CompilerArtifact(artifact) => {
                 // Hey we got some files, record that fact
@@ -304,6 +335,32 @@ pub fn build_cargo_target(
                 // Nothing else interesting?
             }
         }
+    }
+
+    if messages_read.is_some() && is_loongarch64 {
+        let pkgs = expected.packages.keys().collect::<Vec<_>>();
+        let pkg = (*pkgs.first().unwrap()).clone();
+
+        let cross_target_directory = format!(
+            "{working_dir}/target/{target_triple}/{PROFILE_DIST}",
+            working_dir = step.working_dir,
+            target_triple = step.target_triple,
+            PROFILE_DIST = PROFILE_DIST
+        );
+
+        let target_directory = format!(
+            "{working_dir}/target/{PROFILE_DIST}",
+            working_dir = step.working_dir,
+            PROFILE_DIST = PROFILE_DIST
+        );
+
+        let files = [cross_target_directory, target_directory]
+            .iter()
+            .flat_map(|d| std::fs::read_dir(d).ok().into_iter().flatten())
+            .flat_map(|entry| camino::Utf8PathBuf::from_path_buf(entry.ok()?.path()).ok())
+            .collect::<Vec<_>>();
+
+        expected.found_bins(pkg, files);
     }
 
     // Process all the resulting binaries
