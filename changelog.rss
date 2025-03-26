@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>cargo-dist Changelog</title><link>http://127.0.0.1:7979/cargo-dist/changelog</link><description>Changelog information for cargo-dist</description><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><atom:link href="http://127.0.0.1:7979/cargo-dist/changelog.rss" rel="self"/><item><title>Version 0.28.0-tinymist.8 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.8</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.8</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.7 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.7</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.7</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.6 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.6</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.6</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.5 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.5</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.5</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.4 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.4</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.4</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.2 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.2</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.2</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.26.1-tinymist.6 (2024-12-12)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.26.1-tinymist.6</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.26.1-tinymist.6</guid><content:encoded><![CDATA[<p>This is a bugfix release which fixes an issue where aarch64 Windows cross-compilation wouldn't work out of the box. We've updated the default configuration to ensure that this target just works without additional configuration.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1635" rel="noopener noreferrer">fix: always cross-compile to windows via xwin</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.26.1-tinymist.5 (2024-12-12)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.26.1-tinymist.5</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.26.1-tinymist.5</guid><content:encoded><![CDATA[<p>This is a bugfix release which fixes an issue where aarch64 Windows cross-compilation wouldn't work out of the box. We've updated the default configuration to ensure that this target just works without additional configuration.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1635" rel="noopener noreferrer">fix: always cross-compile to windows via xwin</a></li>
+</ul>
+]]></content:encoded></item></channel></rss>

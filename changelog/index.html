@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" id="oranda" class="dark axo">
+  <head>
+    <title>cargo-dist</title>
+    
+      <meta property="og:url" content="https://opensource.axo.dev/cargo-dist/" />
+    
+    
+      <link rel="icon" href="/cargo-dist/favicon.ico" />
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      <meta name="description" content="Shippable application packaging for Rust" />
+      <meta property="og:description" content="Shippable application packaging for Rust" />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="cargo-dist" />
+    
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="og:image" content="https://www.axo.dev/meta_small.jpeg" />
+    
+    
+      <meta property="og:image:alt" content="axo" />
+    
+    
+      <meta name="twitter:creator" content="@axodotdev" />
+      <meta name="twitter:site" content="@axodotdev" />
+    
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <link rel="stylesheet" href="/cargo-dist/oranda-v0.6.1.css" />
+    
+    
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-body">
+        
+          <div class="repo_banner">
+            <a href="https://github.com/Myriad-Dreamin/cargo-dist">
+              <div class="github-icon" aria-hidden="true"></div>
+              Check out our GitHub!
+            </a>
+          </div>
+        
+
+        <main>
+          <header>
+            
+            <h1 class="title">cargo-dist</h1>
+            
+  <nav class="nav">
+    <ul>
+      <li><a href="/cargo-dist/">Home</a></li>
+
+      
+
+      
+        <li><a href="/cargo-dist/artifacts/">Install</a></li>
+      
+
+      
+        <li><a href="/cargo-dist/book/">Docs</a></li>
+      
+
+      
+
+      
+        <li><a href="/cargo-dist/changelog/">Changelog</a></li>
+      
+    </ul>
+  </nav>
+
+          </header>
+
+          
+  <div>
+    <h1>
+      Releases
+      
+        <a href="/cargo-dist/changelog.rss" class="inline-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M3.75 3a.75.75 0 00-.75.75v.5c0 .414.336.75.75.75H4c6.075 0 11 4.925 11 11v.25c0 .414.336.75.75.75h.5a.75.75 0 00.75-.75V16C17 8.82 11.18 3 4 3h-.25z" />
+  <path d="M3 8.75A.75.75 0 013.75 8H4a8 8 0 018 8v.25a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75V16a6 6 0 00-6-6h-.25A.75.75 0 013 9.25v-.5zM7 15a2 2 0 11-4 0 2 2 0 014 0z" />
+</svg></a>
+      
+    </h1>
+    <div class="releases-wrapper">
+      <nav class="releases-nav">
+        
+          <div class="prereleases-toggle">
+            <div class="flex h-6 items-center">
+              <input type="checkbox" id="show-prereleases" />
+            </div>
+            <div class="ml-3">
+              <label for="show-prereleases">Show prereleases</label>
+            </div>
+          </div>
+        
+
+        
+        <ul>
+          
+            <li class="pre-release hidden">
+              <a href="v0.28.0-tinymist.8/">v0.28.0-tinymist.8</a>
+            </li>
+          
+            <li class="pre-release hidden">
+              <a href="v0.28.0-tinymist.7/">v0.28.0-tinymist.7</a>
+            </li>
+          
+            <li class="pre-release hidden">
+              <a href="v0.28.0-tinymist.6/">v0.28.0-tinymist.6</a>
+            </li>
+          
+            <li class="pre-release hidden">
+              <a href="v0.28.0-tinymist.5/">v0.28.0-tinymist.5</a>
+            </li>
+          
+            <li class="pre-release hidden">
+              <a href="v0.28.0-tinymist.4/">v0.28.0-tinymist.4</a>
+            </li>
+          
+            <li class="pre-release hidden">
+              <a href="v0.28.0-tinymist.2/">v0.28.0-tinymist.2</a>
+            </li>
+          
+            <li class="pre-release hidden">
+              <a href="v0.26.1-tinymist.6/">v0.26.1-tinymist.6</a>
+            </li>
+          
+            <li class="pre-release hidden">
+              <a href="v0.26.1-tinymist.5/">v0.26.1-tinymist.5</a>
+            </li>
+          
+        </ul>
+      </nav>
+
+      <div class="releases-list">
+        
+          
+          <section class="release pre-release hidden">
+  <h2 id="tag-v0.28.0-tinymist.8">
+    <a href="v0.28.0-tinymist.8/">
+      
+        Version 0.28.0-tinymist.8 (2025-01-08)
+      
+    </a>
+  </h2>
+  <div class="release-info">
+    <span class="flex items-center gap-2">
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
+    <path stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z' />
+    <path stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z' /></svg>
+      v0.28.0-tinymist.8
+    </span>
+    <span class="flex items-center gap-2">
+      
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' /></svg>
+        Mar 26 2025 at 11:56 UTC
+      
+    </span>
+  </div>
+  <div class="release-body">
+    <p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+
+  </div>
+</section>
+        
+          
+          <section class="release pre-release hidden">
+  <h2 id="tag-v0.28.0-tinymist.7">
+    <a href="v0.28.0-tinymist.7/">
+      
+        Version 0.28.0-tinymist.7 (2025-01-08)
+      
+    </a>
+  </h2>
+  <div class="release-info">
+    <span class="flex items-center gap-2">
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
+    <path stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z' />
+    <path stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z' /></svg>
+      v0.28.0-tinymist.7
+    </span>
+    <span class="flex items-center gap-2">
+      
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' /></svg>
+        Mar 26 2025 at 11:17 UTC
+      
+    </span>
+  </div>
+  <div class="release-body">
+    <p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+
+  </div>
+</section>
+        
+          
+          <section class="release pre-release hidden">
+  <h2 id="tag-v0.28.0-tinymist.6">
+    <a href="v0.28.0-tinymist.6/">
+      
+        Version 0.28.0-tinymist.6 (2025-01-08)
+      
+    </a>
+  </h2>
+  <div class="release-info">
+    <span class="flex items-center gap-2">
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
+    <path stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z' />
+    <path stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z' /></svg>
+      v0.28.0-tinymist.6
+    </span>
+    <span class="flex items-center gap-2">
+      
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' /></svg>
+        Mar 26 2025 at 10:57 UTC
+      
+    </span>
+  </div>
+  <div class="release-body">
+    <p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+
+  </div>
+</section>
+        
+          
+          <section class="release pre-release hidden">
+  <h2 id="tag-v0.28.0-tinymist.5">
+    <a href="v0.28.0-tinymist.5/">
+      
+        Version 0.28.0-tinymist.5 (2025-01-08)
+      
+    </a>
+  </h2>
+  <div class="release-info">
+    <span class="flex items-center gap-2">
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
+    <path stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z' />
+    <path stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z' /></svg>
+      v0.28.0-tinymist.5
+    </span>
+    <span class="flex items-center gap-2">
+      
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' /></svg>
+        Mar 26 2025 at 10:27 UTC
+      
+    </span>
+  </div>
+  <div class="release-body">
+    <p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+
+  </div>
+</section>
+        
+          
+          <section class="release pre-release hidden">
+  <h2 id="tag-v0.28.0-tinymist.4">
+    <a href="v0.28.0-tinymist.4/">
+      
+        Version 0.28.0-tinymist.4 (2025-01-08)
+      
+    </a>
+  </h2>
+  <div class="release-info">
+    <span class="flex items-center gap-2">
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
+    <path stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z' />
+    <path stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z' /></svg>
+      v0.28.0-tinymist.4
+    </span>
+    <span class="flex items-center gap-2">
+      
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' /></svg>
+        Mar 26 2025 at 09:43 UTC
+      
+    </span>
+  </div>
+  <div class="release-body">
+    <p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+
+  </div>
+</section>
+        
+          
+          <section class="release pre-release hidden">
+  <h2 id="tag-v0.28.0-tinymist.2">
+    <a href="v0.28.0-tinymist.2/">
+      
+        Version 0.28.0-tinymist.2 (2025-01-08)
+      
+    </a>
+  </h2>
+  <div class="release-info">
+    <span class="flex items-center gap-2">
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
+    <path stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z' />
+    <path stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z' /></svg>
+      v0.28.0-tinymist.2
+    </span>
+    <span class="flex items-center gap-2">
+      
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' /></svg>
+        Mar 20 2025 at 11:05 UTC
+      
+    </span>
+  </div>
+  <div class="release-body">
+    <p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+
+  </div>
+</section>
+        
+          
+          <section class="release pre-release hidden">
+  <h2 id="tag-v0.26.1-tinymist.6">
+    <a href="v0.26.1-tinymist.6/">
+      
+        Version 0.26.1-tinymist.6 (2024-12-12)
+      
+    </a>
+  </h2>
+  <div class="release-info">
+    <span class="flex items-center gap-2">
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
+    <path stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z' />
+    <path stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z' /></svg>
+      v0.26.1-tinymist.6
+    </span>
+    <span class="flex items-center gap-2">
+      
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' /></svg>
+        Dec 17 2024 at 03:19 UTC
+      
+    </span>
+  </div>
+  <div class="release-body">
+    <p>This is a bugfix release which fixes an issue where aarch64 Windows cross-compilation wouldn't work out of the box. We've updated the default configuration to ensure that this target just works without additional configuration.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1635" rel="noopener noreferrer">fix: always cross-compile to windows via xwin</a></li>
+</ul>
+
+  </div>
+</section>
+        
+          
+          <section class="release pre-release hidden">
+  <h2 id="tag-v0.26.1-tinymist.5">
+    <a href="v0.26.1-tinymist.5/">
+      
+        Version 0.26.1-tinymist.5 (2024-12-12)
+      
+    </a>
+  </h2>
+  <div class="release-info">
+    <span class="flex items-center gap-2">
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
+    <path stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z' />
+    <path stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z' /></svg>
+      v0.26.1-tinymist.5
+    </span>
+    <span class="flex items-center gap-2">
+      
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' /></svg>
+        Dec 16 2024 at 20:19 UTC
+      
+    </span>
+  </div>
+  <div class="release-body">
+    <p>This is a bugfix release which fixes an issue where aarch64 Windows cross-compilation wouldn't work out of the box. We've updated the default configuration to ensure that this target just works without additional configuration.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1635" rel="noopener noreferrer">fix: always cross-compile to windows via xwin</a></li>
+</ul>
+
+  </div>
+</section>
+        
+      </div>
+    </div>
+  </div>
+
+        </main>
+      </div>
+
+      <footer>
+        
+          <a href="https://github.com/Myriad-Dreamin/cargo-dist"><div class="github-icon" aria-hidden="true"></div></a>
+        
+        <span>
+          cargo-dist, MIT OR Apache-2.0
+        </span>
+      </footer>
+    </div>
+
+    
+      <script defer="true" data-domain="opensource.axo.dev" src="https://plausible.io/js/script.js"></script>
+    
+    
+
+    
+  <script src="/cargo-dist/artifacts.js"></script>
+
+  </body>
+</html>
