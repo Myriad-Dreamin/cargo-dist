@@ -71,6 +71,12 @@ on:
   {{%- endif %}}
   {{%- if dispatch_releases %}}
   workflow_call:
+    inputs:
+      tag:
+        description: Release Tag
+        required: true
+        default: dry-run
+        type: string
   workflow_dispatch:
     inputs:
       tag:
