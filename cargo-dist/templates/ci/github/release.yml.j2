@@ -201,7 +201,7 @@ jobs:
     {{%- for job in plan_jobs %}}
       - custom-{{{ job.name|safe }}}
     {{%- endfor %}}
-    if: ${{ fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.include != null && (needs.plan.outputs.publishing == 'true' || (fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload' && (inputs.targets == 'all' || contains(inputs.targets, join(fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.targets, ''))))) }}
+    if: ${{ fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.include != null && (needs.plan.outputs.publishing == 'true' || (fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload' && (inputs.targets == 'all' || contains(inputs.targets, join(fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.targets, '')))))
     {{%- if dispatch_releases %}} || inputs.tag == 'dry-run' {{%- endif %}}
     {{{- " }}" | safe }}}
     strategy:
