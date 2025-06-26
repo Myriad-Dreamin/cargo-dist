@@ -71,12 +71,29 @@ on:
   pull_request:
   {{%- endif %}}
   {{%- if dispatch_releases %}}
+  workflow_call:
+    inputs:
+      tag:
+        description: Release Tag
+        required: true
+        default: dry-run
+        type: string
+      targets:
+        description: Targets to build
+        required: true
+        default: all
+        type: string
   workflow_dispatch:
     inputs:
       tag:
         description: Release Tag
         required: true
         default: dry-run
+        type: string
+      targets:
+        description: Targets to build
+        required: true
+        default: all
         type: string
   {{%- elif release_branch %}}
   push:
@@ -186,7 +203,7 @@ jobs:
     {{%- for job in plan_jobs %}}
       - custom-{{{ job.name|safe }}}
     {{%- endfor %}}
-    if: ${{ fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.include != null && (needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload')
+    if: ${{ fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.include != null && (needs.plan.outputs.publishing == 'true' || (fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload') || (inputs.targets == 'all' || contains(inputs.targets, join(fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.targets, ''))))
     {{%- if dispatch_releases %}} || inputs.tag == 'dry-run' {{%- endif %}}
     {{{- " }}" | safe }}}
     strategy:
