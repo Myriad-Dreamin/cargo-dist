@@ -4,7 +4,7 @@ use std::env;
 
 use axoprocess::Cmd;
 use axoproject::WorkspaceIdx;
-use cargo_dist_schema::target_lexicon::{Architecture, Environment, Triple};
+use cargo_dist_schema::target_lexicon::{Architecture, Environment, OperatingSystem, Triple};
 use cargo_dist_schema::{DistManifest, TripleName};
 use miette::{Context, IntoDiagnostic};
 use tracing::warn;
@@ -190,6 +190,13 @@ pub fn make_build_cargo_target_command(
         None => {
             command.arg("build");
         }
+        Some(CargoBuildWrapper::Cross) => {
+            command = Cmd::new("cross", "build your app with Cross");
+            if auditable {
+                command.arg("auditable");
+            }
+            command.arg("build");
+        }
         Some(CargoBuildWrapper::ZigBuild) => {
             if auditable {
                 return Err(DistError::CannotDoCargoAuditableAndCrossCompile {
@@ -282,6 +289,24 @@ pub fn build_cargo_target(
     let mut task = command.spawn()?;
 
     let mut expected = BuildExpectations::new(dist_graph, &step.expected_binaries);
+
+    let target: Triple = step.target_triple.parse()?;
+    let mut messages_read = None;
+    let is_loongarch64 = matches!(target.architecture, Architecture::LoongArch64);
+    if matches!(
+        (
+            target.architecture,
+            target.operating_system,
+            host.operating_system
+        ),
+        (
+            Architecture::LoongArch64,
+            OperatingSystem::Linux,
+            OperatingSystem::Linux
+        )
+    ) {
+        messages_read = Some(vec![]);
+    }
 
     // Collect up the compiler messages to find out where binaries ended up
     let reader = std::io::BufReader::new(task.stdout.take().unwrap());
