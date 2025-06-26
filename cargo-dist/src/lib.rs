@@ -98,6 +98,7 @@ pub fn do_env_test(cfg: &Config) -> DistResult<()> {
                     Some(CargoBuildWrapper::ZigBuild) => {
                         need_zigbuild = true;
                     }
+                    Some(CargoBuildWrapper::Cross) => {}
                     None => {}
                 }
             }
