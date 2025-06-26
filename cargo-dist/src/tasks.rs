@@ -542,6 +542,10 @@ pub fn build_wrapper_for_cross(
         },
         // compiling for Windows (making PE binaries, .dll files, etc.)
         OperatingSystem::Windows => match host.operating_system {
+            OperatingSystem::Windows => {
+                // from win to win, it is okay for tinymist
+                Ok(None)
+            }
             OperatingSystem::Linux | OperatingSystem::Darwin => {
                 // cargo-xwin is made for that
                 Ok(Some(CargoBuildWrapper::Xwin))
