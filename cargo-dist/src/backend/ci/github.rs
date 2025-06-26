@@ -825,7 +825,7 @@ fn system_deps_install_script(
     }
 
     if required_wrappers.contains(&CargoBuildWrapper::Cross) {
-        lines.push("cargo install cross --git https://github.com/cross-rs/cross.git --locked --rev e02728fd419430ee4f7577c372cde9f1cabaccd1; ".to_owned());
+        lines.push("cargo install cross --git https://github.com/cross-rs/cross.git --locked --rev 51f46f296253d8122c927c5bb933e3c4f27cc317; ".to_owned());
     }
 
     let mut pip_pkgs: SortedSet<PipPackageName> = Default::default();
