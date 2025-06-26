@@ -58,7 +58,7 @@ use axoasset::AxoClient;
 use axoprocess::Cmd;
 use axoproject::{PackageId, PackageIdx, WorkspaceGraph};
 use camino::{Utf8Path, Utf8PathBuf};
-use cargo_dist_schema::target_lexicon::{OperatingSystem, Triple};
+use cargo_dist_schema::target_lexicon::{Architecture, OperatingSystem, Triple};
 use cargo_dist_schema::{
     ArtifactId, BuildEnvironment, DistManifest, HomebrewPackageName, SystemId, SystemInfo,
     TripleName, TripleNameRef,
@@ -461,6 +461,10 @@ pub struct CargoBuildStep {
 /// A wrapper to use instead of `cargo build`, generally used for cross-compilation
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub enum CargoBuildWrapper {
+    /// Run 'cargo cross' to cross-compile, e.g. from `x86_64-unknown-linux-gnu` to `loongarch64-unknown-linux-gnu`
+    /// cf. <https://github.com/cross-rs/cross>
+    Cross,
+
     /// Run 'cargo zigbuild' to cross-compile, e.g. from `x86_64-unknown-linux-gnu` to `aarch64-unknown-linux-gnu`
     /// cf. <https://github.com/rust-cross/cargo-zigbuild>
     ZigBuild,
@@ -473,6 +477,7 @@ pub enum CargoBuildWrapper {
 impl std::fmt::Display for CargoBuildWrapper {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.pad(match self {
+            CargoBuildWrapper::Cross => "cargo-cross",
             CargoBuildWrapper::ZigBuild => "cargo-zigbuild",
             CargoBuildWrapper::Xwin => "cargo-xwin",
         })
@@ -488,6 +493,21 @@ pub fn build_wrapper_for_cross(
     {
         // we're not cross-compiling, not really... maybe we're making a GNU binary from a "musl" host but meh.
         return Ok(None);
+    }
+
+    if matches!(
+        (
+            target.architecture,
+            target.operating_system,
+            host.operating_system
+        ),
+        (
+            Architecture::LoongArch64,
+            OperatingSystem::Linux,
+            OperatingSystem::Linux
+        )
+    ) {
+        return Ok(Some(CargoBuildWrapper::Cross));
     }
 
     match target.operating_system {

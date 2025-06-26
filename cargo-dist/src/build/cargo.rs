@@ -190,6 +190,13 @@ pub fn make_build_cargo_target_command(
         None => {
             command.arg("build");
         }
+        Some(CargoBuildWrapper::Cross) => {
+            command = Cmd::new("cross", "build your app with Cross");
+            if auditable {
+                command.arg("auditable");
+            }
+            command.arg("build");
+        }
         Some(CargoBuildWrapper::ZigBuild) => {
             if auditable {
                 return Err(DistError::CannotDoCargoAuditableAndCrossCompile {
