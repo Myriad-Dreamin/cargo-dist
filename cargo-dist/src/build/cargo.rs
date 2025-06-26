@@ -313,6 +313,33 @@ pub fn build_cargo_target(
         }
     }
 
+    let target: Triple = step.target_triple.parse()?;
+    if  matches!(target.architecture, Architecture::LoongArch64) {
+        let pkgs = expected.packages.keys().collect::<Vec<_>>();
+        let pkg = (*pkgs.first().unwrap()).clone();
+
+        let cross_target_directory = format!(
+            "{working_dir}/target/{target_triple}/{PROFILE_DIST}",
+            working_dir = step.working_dir,
+            target_triple = step.target_triple,
+            PROFILE_DIST = PROFILE_DIST
+        );
+
+        let target_directory = format!(
+            "{working_dir}/target/{PROFILE_DIST}",
+            working_dir = step.working_dir,
+            PROFILE_DIST = PROFILE_DIST
+        );
+
+        let files = [cross_target_directory, target_directory]
+            .iter()
+            .flat_map(|d| std::fs::read_dir(d).ok().into_iter().flatten())
+            .flat_map(|entry| camino::Utf8PathBuf::from_path_buf(entry.ok()?.path()).ok())
+            .collect::<Vec<_>>();
+
+        expected.found_bins(pkg, files);
+    }
+
     // Process all the resulting binaries
     expected.process_bins(dist_graph, manifest)?;
 
