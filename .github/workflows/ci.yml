@@ -69,12 +69,9 @@ jobs:
           toolchain: stable
           components: clippy
       - uses: swatinem/rust-cache@e18b497796c12c097a38f9edb9d0641fb99eee32 # v2
-      - uses: actions-rs/clippy-check@b5b5f21f4797c02da247df37026fcd0a5024aa4d # v1.0.7
+      - run: cargo clippy --workspace --tests --examples
         env:
           PWD: ${{ env.GITHUB_WORKSPACE }}
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --workspace --tests --examples
 
   # Make sure the docs build without warnings
   docs:
