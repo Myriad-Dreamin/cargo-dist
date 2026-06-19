@@ -67,12 +67,29 @@ on:
   pull_request:
   {{%- endif %}}
   {{%- if dispatch_releases %}}
+  workflow_call:
+    inputs:
+      tag:
+        description: Release Tag
+        required: true
+        default: dry-run
+        type: string
+      targets:
+        description: Targets to build
+        required: true
+        default: all
+        type: string
   workflow_dispatch:
     inputs:
       tag:
         description: Release Tag
         required: true
         default: dry-run
+        type: string
+      targets:
+        description: Targets to build
+        required: true
+        default: all
         type: string
   {{%- elif release_branch %}}
   push:
@@ -95,6 +112,7 @@ jobs:
     outputs:
       val: ${{ steps.plan.outputs.manifest }}
       {{%- if dispatch_releases %}}
+      artifacts_matrix: ${{ steps.plan.outputs.artifacts_matrix }}
       tag: ${{ (inputs.tag != 'dry-run' && inputs.tag) || '' }}
       tag-flag: ${{ inputs.tag && inputs.tag != 'dry-run' && format('--tag={0}', inputs.tag) || '' }}
       publishing: ${{ inputs.tag && inputs.tag != 'dry-run' }}
@@ -144,6 +162,21 @@ jobs:
           echo "dist ran successfully"
           cat plan-dist-manifest.json
           echo "manifest=$(jq -c "." plan-dist-manifest.json)" >> "$GITHUB_OUTPUT"
+          {{%- if dispatch_releases %}}
+          dist_targets="${{ inputs.targets }}"
+          jq -c --arg targets "$dist_targets" '
+            .ci.github.artifacts_matrix
+            | if $targets == "" or $targets == "all" then .
+              else
+                ($targets | split(",") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))) as $wanted
+                | .include = [
+                    (.include // [])[]
+                    | select(any(.targets // []; . as $target | ($wanted | index($target)) != null))
+                  ]
+              end
+          ' plan-dist-manifest.json > artifacts-matrix.json
+          echo "artifacts_matrix=$(cat artifacts-matrix.json)" >> "$GITHUB_OUTPUT"
+          {{%- endif %}}
           {{%- if release_branch %}}
           echo "tag=$(jq --raw-output ".announcement_tag" plan-dist-manifest.json)" >> "$GITHUB_OUTPUT"
           echo "tag-flag=--tag=$(jq --raw-output ".announcement_tag" plan-dist-manifest.json) --force-tag" >> "$GITHUB_OUTPUT"
@@ -178,8 +211,11 @@ jobs:
     {{%- for job in plan_jobs %}}
       - custom-{{{ job.name|safe }}}
     {{%- endfor %}}
+    {{%- if dispatch_releases %}}
+    if: ${{ fromJson(needs.plan.outputs.artifacts_matrix).include != null && fromJson(needs.plan.outputs.artifacts_matrix).include[0] != null && (needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload' || inputs.tag == 'dry-run')
+    {{%- else %}}
     if: ${{ fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.include != null && (needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload')
-    {{%- if dispatch_releases %}} || inputs.tag == 'dry-run' {{%- endif %}}
+    {{%- endif %}}
     {{{- " }}" | safe }}}
     strategy:
       fail-fast: {{{ fail_fast }}}
@@ -193,7 +229,11 @@ jobs:
       # Typically there will be:
       # - 1 "global" task that builds universal installers
       # - N "local" tasks that build each platform's binaries and platform-specific installers
+      {{%- if dispatch_releases %}}
+      matrix: ${{ fromJson(needs.plan.outputs.artifacts_matrix) }}
+      {{%- else %}}
       matrix: ${{ fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix }}
+      {{%- endif %}}
     runs-on: ${{ matrix.runner }}
     container: ${{ matrix.container && matrix.container.image || null }}
     env:
@@ -356,8 +396,11 @@ jobs:
     {{%- for job in plan_jobs %}}
       - custom-{{{ job.name|safe }}}
     {{%- endfor %}}
+    {{%- if dispatch_releases %}}
+    if: ${{ fromJson(needs.plan.outputs.artifacts_matrix).include != null && fromJson(needs.plan.outputs.artifacts_matrix).include[0] != null && (needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload' || inputs.tag == 'dry-run')
+    {{%- else %}}
     if: ${{ needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload'
-    {{%- if dispatch_releases %}} || inputs.tag == 'dry-run' {{%- endif %}}
+    {{%- endif %}}
     {{{- " }}" | safe }}}
     uses: ./.github/workflows/{{{ job.name|safe }}}.yml
     with:

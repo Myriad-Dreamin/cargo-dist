@@ -3,6 +3,17 @@
 Nothing Yet!
 
 
+# Version 0.32.0-tinymist.1 (2026-06-19)
+
+This tinymist fork release rebases the fork on cargo-dist 0.32.0 while preserving tinymist-specific build support.
+
+## Fixes
+
+- Keep the tinymist LoongArch/cross build support on top of cargo-dist 0.32.0.
+- Support dispatching release workflows through `workflow_call` with a `targets` input.
+- Filter the GitHub local-artifacts matrix by the requested dispatch targets so tinymist CI can avoid building unrelated platforms.
+
+
 # Version 0.32.0 (2026-05-21)
 
 This release contains several bugfixes and an update to the npm installer to reduce its dependencies. It also updates the default versions of all GitHub actions.

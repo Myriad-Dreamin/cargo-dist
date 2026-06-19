@@ -261,7 +261,7 @@ CENSORED (see https://github.com/axodotdev/cargo-dist/issues/1477)  source.tar.g
             "host": "aarch64-apple-darwin",
             "install_dist": {
               "shell": "sh",
-              "run": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/vSOME_VERSION/cargo-dist-installer.sh | sh"
+              "run": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/v0.32.0-tinymist.1/cargo-dist-installer.sh | sh"
             },
             "dist_args": "--artifacts=local --target=aarch64-apple-darwin",
             "targets": [
@@ -274,7 +274,7 @@ CENSORED (see https://github.com/axodotdev/cargo-dist/issues/1477)  source.tar.g
             "host": "x86_64-apple-darwin",
             "install_dist": {
               "shell": "sh",
-              "run": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/vSOME_VERSION/cargo-dist-installer.sh | sh"
+              "run": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/v0.32.0-tinymist.1/cargo-dist-installer.sh | sh"
             },
             "dist_args": "--artifacts=local --target=x86_64-apple-darwin",
             "targets": [
@@ -287,7 +287,7 @@ CENSORED (see https://github.com/axodotdev/cargo-dist/issues/1477)  source.tar.g
             "host": "x86_64-pc-windows-msvc",
             "install_dist": {
               "shell": "pwsh",
-              "run": "irm https://github.com/axodotdev/cargo-dist/releases/download/vSOME_VERSION/cargo-dist-installer.ps1 | iex"
+              "run": "irm https://github.com/axodotdev/cargo-dist/releases/download/v0.32.0-tinymist.1/cargo-dist-installer.ps1 | iex"
             },
             "dist_args": "--artifacts=local --target=x86_64-pc-windows-msvc",
             "targets": [
@@ -300,7 +300,7 @@ CENSORED (see https://github.com/axodotdev/cargo-dist/issues/1477)  source.tar.g
             "host": "x86_64-unknown-linux-gnu",
             "install_dist": {
               "shell": "sh",
-              "run": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/vSOME_VERSION/cargo-dist-installer.sh | sh"
+              "run": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/v0.32.0-tinymist.1/cargo-dist-installer.sh | sh"
             },
             "dist_args": "--artifacts=local --target=x86_64-unknown-linux-gnu",
             "targets": [
@@ -360,12 +360,29 @@ permissions:
 # will be marked as a prerelease.
 on:
   pull_request:
+  workflow_call:
+    inputs:
+      tag:
+        description: Release Tag
+        required: true
+        default: dry-run
+        type: string
+      targets:
+        description: Targets to build
+        required: true
+        default: all
+        type: string
   workflow_dispatch:
     inputs:
       tag:
         description: Release Tag
         required: true
         default: dry-run
+        type: string
+      targets:
+        description: Targets to build
+        required: true
+        default: all
         type: string
 
 jobs:
@@ -374,6 +391,7 @@ jobs:
     runs-on: "ubuntu-22.04"
     outputs:
       val: ${{ steps.plan.outputs.manifest }}
+      artifacts_matrix: ${{ steps.plan.outputs.artifacts_matrix }}
       tag: ${{ (inputs.tag != 'dry-run' && inputs.tag) || '' }}
       tag-flag: ${{ inputs.tag && inputs.tag != 'dry-run' && format('--tag={0}', inputs.tag) || '' }}
       publishing: ${{ inputs.tag && inputs.tag != 'dry-run' }}
@@ -388,7 +406,7 @@ jobs:
         # we specify bash to get pipefail; it guards against the `curl` command
         # failing. otherwise `sh` won't catch that `curl` returned non-0
         shell: bash
-        run: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/vSOME_VERSION/cargo-dist-installer.sh | sh"
+        run: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/releases/download/v0.32.0-tinymist.1/cargo-dist-installer.sh | sh"
       - name: Cache dist
         uses: actions/upload-artifact@v7
         with:
@@ -405,6 +423,19 @@ jobs:
           echo "dist ran successfully"
           cat plan-dist-manifest.json
           echo "manifest=$(jq -c "." plan-dist-manifest.json)" >> "$GITHUB_OUTPUT"
+          dist_targets="${{ inputs.targets }}"
+          jq -c --arg targets "$dist_targets" '
+            .ci.github.artifacts_matrix
+            | if $targets == "" or $targets == "all" then .
+              else
+                ($targets | split(",") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))) as $wanted
+                | .include = [
+                    (.include // [])[]
+                    | select(any(.targets // []; . as $target | ($wanted | index($target)) != null))
+                  ]
+              end
+          ' plan-dist-manifest.json > artifacts-matrix.json
+          echo "artifacts_matrix=$(cat artifacts-matrix.json)" >> "$GITHUB_OUTPUT"
       - name: "Upload dist-manifest.json"
         uses: actions/upload-artifact@v7
         with:
@@ -417,7 +448,7 @@ jobs:
     # Let the initial task tell us to not run (currently very blunt)
     needs:
       - plan
-    if: ${{ fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix.include != null && (needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload') || inputs.tag == 'dry-run' }}
+    if: ${{ fromJson(needs.plan.outputs.artifacts_matrix).include != null && fromJson(needs.plan.outputs.artifacts_matrix).include[0] != null && (needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload' || inputs.tag == 'dry-run') }}
     strategy:
       fail-fast: false
       # Target platforms/runners are computed by dist in create-release.
@@ -430,7 +461,7 @@ jobs:
       # Typically there will be:
       # - 1 "global" task that builds universal installers
       # - N "local" tasks that build each platform's binaries and platform-specific installers
-      matrix: ${{ fromJson(needs.plan.outputs.val).ci.github.artifacts_matrix }}
+      matrix: ${{ fromJson(needs.plan.outputs.artifacts_matrix) }}
     runs-on: ${{ matrix.runner }}
     container: ${{ matrix.container && matrix.container.image || null }}
     env:
