@@ -4,7 +4,7 @@ expression: format_outputs(&output)
 ---
 stdout:
 {
-  "dist_version": "1.0.0-FAKEVERSION",
+  "dist_version": "1.0.0-FAKEVERSION-tinymist.1",
   "announcement_tag": "CENSORED",
   "announcement_tag_is_implicit": false,
   "announcement_is_prerelease": "CENSORED"
@@ -14,7 +14,7 @@ stdout:
   "releases": [
     {
       "app_name": "cargo-dist-schema",
-      "app_version": "1.0.0-FAKEVERSION",
+      "app_version": "1.0.0-FAKEVERSION-tinymist.1",
       "env": {
         "install_dir_env_var": "CARGO_DIST_SCHEMA_INSTALL_DIR",
         "unmanaged_dir_env_var": "CARGO_DIST_SCHEMA_UNMANAGED_INSTALL",
@@ -35,8 +35,8 @@ stdout:
         ],
         "github": {
           "artifact_base_url": "https://github.com",
-          "artifact_download_path": "/axodotdev/cargo-dist/releases/download/cargo-dist-schema-v1.0.0-FAKEVERSION",
-          "owner": "axodotdev",
+          "artifact_download_path": "/Myriad-Dreamin/cargo-dist/releases/download/cargo-dist-schema-v1.0.0-FAKEVERSION-tinymist.1",
+          "owner": "Myriad-Dreamin",
           "repo": "cargo-dist"
         }
       }
