@@ -4,7 +4,7 @@ expression: format_outputs(&output)
 ---
 stdout:
 {
-  "dist_version": "1.0.0-FAKEVERSION-tinymist.1",
+  "dist_version": "1.0.0-FAKEVERSION",
   "announcement_tag": "CENSORED",
   "announcement_tag_is_implicit": true,
   "announcement_is_prerelease": "CENSORED"
@@ -14,7 +14,7 @@ stdout:
   "releases": [
     {
       "app_name": "cargo-dist",
-      "app_version": "1.0.0-FAKEVERSION-tinymist.1",
+      "app_version": "1.0.0-FAKEVERSION",
       "env": {
         "install_dir_env_var": "CARGO_DIST_INSTALL_DIR",
         "unmanaged_dir_env_var": "CARGO_DIST_UNMANAGED_INSTALL",
@@ -59,7 +59,7 @@ stdout:
         ],
         "github": {
           "artifact_base_url": "https://github.com",
-          "artifact_download_path": "/Myriad-Dreamin/cargo-dist/releases/download/v1.0.0-FAKEVERSION-tinymist.1",
+          "artifact_download_path": "/Myriad-Dreamin/cargo-dist/releases/download/v1.0.0-FAKEVERSION",
           "owner": "Myriad-Dreamin",
           "repo": "cargo-dist"
         }
@@ -204,7 +204,7 @@ stdout:
         "x86_64-pc-windows-gnu",
         "x86_64-pc-windows-msvc"
       ],
-      "install_hint": "powershell -ExecutionPolicy Bypass -c \"irm https://github.com/Myriad-Dreamin/cargo-dist/releases/download/v1.0.0-FAKEVERSION-tinymist.1/cargo-dist-installer.ps1 | iex\"",
+      "install_hint": "powershell -ExecutionPolicy Bypass -c \"irm https://github.com/Myriad-Dreamin/cargo-dist/releases/download/v1.0.0-FAKEVERSION/cargo-dist-installer.ps1 | iex\"",
       "description": "Install prebuilt binaries via powershell script"
     },
     "cargo-dist-installer.sh": {
@@ -221,7 +221,7 @@ stdout:
         "x86_64-unknown-linux-musl-dynamic",
         "x86_64-unknown-linux-musl-static"
       ],
-      "install_hint": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Myriad-Dreamin/cargo-dist/releases/download/v1.0.0-FAKEVERSION-tinymist.1/cargo-dist-installer.sh | sh",
+      "install_hint": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Myriad-Dreamin/cargo-dist/releases/download/v1.0.0-FAKEVERSION/cargo-dist-installer.sh | sh",
       "description": "Install prebuilt binaries via shell script"
     },
     "cargo-dist-npm-package.tar.gz": {
@@ -297,7 +297,7 @@ stdout:
           "kind": "unknown"
         }
       ],
-      "install_hint": "npm install @axodotdev/dist@1.0.0-FAKEVERSION-tinymist.1",
+      "install_hint": "npm install @axodotdev/dist@1.0.0-FAKEVERSION",
       "description": "Install prebuilt binaries into your npm project"
     },
     "cargo-dist-x86_64-apple-darwin.tar.xz": {
