@@ -299,7 +299,10 @@ pub fn build_cargo_target(
         match message {
             cargo_metadata::Message::CompilerArtifact(artifact) => {
                 // Hey we got some files, record that fact
-                expected.found_bins(artifact.package_id.to_string(), artifact.filenames);
+                expected.found_bins(
+                    artifact.package_id.to_string(),
+                    artifact_filenames(artifact.filenames, artifact.executable),
+                );
             }
             _ => {
                 // Nothing else interesting?
@@ -311,6 +314,18 @@ pub fn build_cargo_target(
     expected.process_bins(dist_graph, manifest)?;
 
     Ok(())
+}
+
+fn artifact_filenames(
+    mut filenames: Vec<camino::Utf8PathBuf>,
+    executable: Option<camino::Utf8PathBuf>,
+) -> Vec<camino::Utf8PathBuf> {
+    if let Some(executable) = executable {
+        if !filenames.contains(&executable) {
+            filenames.push(executable);
+        }
+    }
+    filenames
 }
 
 /// Run rustup to setup a cargo target
@@ -336,7 +351,9 @@ fn determine_brew_rustflags(base_rustflags: &str, environment: &SortedMap<&str, 
 #[cfg(test)]
 mod tests {
 
-    use super::make_build_cargo_target_command;
+    use super::{artifact_filenames, make_build_cargo_target_command};
+    use camino::Utf8PathBuf;
+
     use crate::platform::targets;
     use crate::tasks::{CargoTargetFeatureList, CargoTargetFeatures, CargoTargetPackages};
     use crate::CargoBuildStep;
@@ -412,5 +429,25 @@ mod tests {
 
         let arg2 = args.next().unwrap().to_str().unwrap();
         assert_eq!(arg2, "build");
+    }
+
+    #[test]
+    fn artifact_filenames_includes_executable() {
+        let filenames = vec![Utf8PathBuf::from("target/debug/deps/libexample.rlib")];
+        let executable = Utf8PathBuf::from("target/debug/example");
+
+        let filenames = artifact_filenames(filenames, Some(executable.clone()));
+
+        assert!(filenames.contains(&executable));
+    }
+
+    #[test]
+    fn artifact_filenames_deduplicates_executable() {
+        let executable = Utf8PathBuf::from("target/debug/example");
+        let filenames = vec![executable.clone()];
+
+        let filenames = artifact_filenames(filenames, Some(executable));
+
+        assert_eq!(filenames.len(), 1);
     }
 }
