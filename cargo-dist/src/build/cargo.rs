@@ -4,6 +4,7 @@ use std::env;
 
 use axoprocess::Cmd;
 use axoproject::WorkspaceIdx;
+use camino::Utf8PathBuf;
 use cargo_dist_schema::target_lexicon::{Architecture, Environment, Triple};
 use cargo_dist_schema::{DistManifest, TripleName};
 use miette::{Context, IntoDiagnostic};
@@ -310,6 +311,18 @@ pub fn build_cargo_target(
         }
     }
 
+    let target: Triple = step.target_triple.parse()?;
+    if matches!(target.architecture, Architecture::LoongArch64) {
+        let files = loongarch_artifact_filenames(
+            &step.working_dir,
+            step.target_triple.as_str(),
+            &step.profile,
+        );
+        for pkg in expected.packages.keys().cloned().collect::<Vec<_>>() {
+            expected.found_bins(pkg, files.clone());
+        }
+    }
+
     // Process all the resulting binaries
     expected.process_bins(dist_graph, manifest)?;
 
@@ -317,15 +330,38 @@ pub fn build_cargo_target(
 }
 
 fn artifact_filenames(
-    mut filenames: Vec<camino::Utf8PathBuf>,
-    executable: Option<camino::Utf8PathBuf>,
-) -> Vec<camino::Utf8PathBuf> {
+    mut filenames: Vec<Utf8PathBuf>,
+    executable: Option<Utf8PathBuf>,
+) -> Vec<Utf8PathBuf> {
     if let Some(executable) = executable {
         if !filenames.contains(&executable) {
             filenames.push(executable);
         }
     }
     filenames
+}
+
+fn loongarch_artifact_filenames(
+    working_dir: &camino::Utf8Path,
+    target_triple: &str,
+    profile: &str,
+) -> Vec<Utf8PathBuf> {
+    loongarch_artifact_search_dirs(working_dir, target_triple, profile)
+        .iter()
+        .flat_map(|dir| std::fs::read_dir(dir).ok().into_iter().flatten())
+        .filter_map(|entry| Utf8PathBuf::from_path_buf(entry.ok()?.path()).ok())
+        .collect()
+}
+
+fn loongarch_artifact_search_dirs(
+    working_dir: &camino::Utf8Path,
+    target_triple: &str,
+    profile: &str,
+) -> Vec<Utf8PathBuf> {
+    vec![
+        working_dir.join("target").join(target_triple).join(profile),
+        working_dir.join("target").join(profile),
+    ]
 }
 
 /// Run rustup to setup a cargo target
@@ -351,8 +387,10 @@ fn determine_brew_rustflags(base_rustflags: &str, environment: &SortedMap<&str, 
 #[cfg(test)]
 mod tests {
 
-    use super::{artifact_filenames, make_build_cargo_target_command};
-    use camino::Utf8PathBuf;
+    use super::{
+        artifact_filenames, loongarch_artifact_search_dirs, make_build_cargo_target_command,
+    };
+    use camino::{Utf8Path, Utf8PathBuf};
 
     use crate::platform::targets;
     use crate::tasks::{CargoTargetFeatureList, CargoTargetFeatures, CargoTargetPackages};
@@ -449,5 +487,21 @@ mod tests {
         let filenames = artifact_filenames(filenames, Some(executable));
 
         assert_eq!(filenames.len(), 1);
+    }
+
+    #[test]
+    fn loongarch_artifact_search_dirs_include_cross_and_host_profile_dirs() {
+        let working_dir = Utf8Path::new("/workspace/project");
+
+        let dirs =
+            loongarch_artifact_search_dirs(working_dir, "loongarch64-unknown-linux-musl", "dist");
+
+        assert_eq!(
+            dirs,
+            vec![
+                Utf8PathBuf::from("/workspace/project/target/loongarch64-unknown-linux-musl/dist"),
+                Utf8PathBuf::from("/workspace/project/target/dist"),
+            ]
+        );
     }
 }
