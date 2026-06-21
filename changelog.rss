@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>cargo-dist Changelog</title><link>http://127.0.0.1:7979/cargo-dist/changelog</link><description>Changelog information for cargo-dist</description><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><atom:link href="http://127.0.0.1:7979/cargo-dist/changelog.rss" rel="self"/><item><title>Version 0.32.0-tinymist.5 (2026-05-21)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.5</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.5</guid><content:encoded><![CDATA[<p>This release contains several bugfixes and an update to the npm installer to reduce its dependencies. It also updates the default versions of all GitHub actions.</p>
+<h2>npm installer</h2>
+<p>The npm installer now relies on builtin node modules in place of the external axios and rimraf libraries. In order to support this, we've raised the minimum supported node version to <a href="https://nodejs.org/en/blog/release/v14.14.0" rel="noopener noreferrer">14.14</a>.</p>
+<ul>
+<li>impl @rafaeelaudibert <a href="https://github.com/axodotdev/cargo-dist/pull/2350" rel="noopener noreferrer">chore(npm): replace axios with native node:http/node:https</a></li>
+</ul>
+<h2>cargo-zigbuild and cargo-auditable</h2>
+<p>It's now possible to use cargo-auditable together with cross-compilation via cargo-zigbuild. In previous versions of dist, these two features were mutually exclusive.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/2318" rel="noopener noreferrer">feat(auditable): remove zigbuild limitation</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>impl @eegli <a href="https://github.com/axodotdev/cargo-dist/pull/2313" rel="noopener noreferrer">fix: double escape windows path in receipt</a></li>
+<li>impl @woodruffw <a href="https://github.com/axodotdev/cargo-dist/pull/2392" rel="noopener noreferrer">ps1: peek the inner exception on download failure</a></li>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/2357" rel="noopener noreferrer">feat(ci): migrate from attest-build-provenance@v3 to attest@v4</a></li>
+<li>impl @OpenSauce <a href="https://github.com/axodotdev/cargo-dist/pull/2322" rel="noopener noreferrer">chore(deps): bump github actions</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.32.0-tinymist.4 (2026-05-21)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.4</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.4</guid><content:encoded><![CDATA[<p>This release contains several bugfixes and an update to the npm installer to reduce its dependencies. It also updates the default versions of all GitHub actions.</p>
+<h2>npm installer</h2>
+<p>The npm installer now relies on builtin node modules in place of the external axios and rimraf libraries. In order to support this, we've raised the minimum supported node version to <a href="https://nodejs.org/en/blog/release/v14.14.0" rel="noopener noreferrer">14.14</a>.</p>
+<ul>
+<li>impl @rafaeelaudibert <a href="https://github.com/axodotdev/cargo-dist/pull/2350" rel="noopener noreferrer">chore(npm): replace axios with native node:http/node:https</a></li>
+</ul>
+<h2>cargo-zigbuild and cargo-auditable</h2>
+<p>It's now possible to use cargo-auditable together with cross-compilation via cargo-zigbuild. In previous versions of dist, these two features were mutually exclusive.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/2318" rel="noopener noreferrer">feat(auditable): remove zigbuild limitation</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>impl @eegli <a href="https://github.com/axodotdev/cargo-dist/pull/2313" rel="noopener noreferrer">fix: double escape windows path in receipt</a></li>
+<li>impl @woodruffw <a href="https://github.com/axodotdev/cargo-dist/pull/2392" rel="noopener noreferrer">ps1: peek the inner exception on download failure</a></li>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/2357" rel="noopener noreferrer">feat(ci): migrate from attest-build-provenance@v3 to attest@v4</a></li>
+<li>impl @OpenSauce <a href="https://github.com/axodotdev/cargo-dist/pull/2322" rel="noopener noreferrer">chore(deps): bump github actions</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.32.0-tinymist.3 (2026-05-21)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.3</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.3</guid><content:encoded><![CDATA[<p>This release contains several bugfixes and an update to the npm installer to reduce its dependencies. It also updates the default versions of all GitHub actions.</p>
+<h2>npm installer</h2>
+<p>The npm installer now relies on builtin node modules in place of the external axios and rimraf libraries. In order to support this, we've raised the minimum supported node version to <a href="https://nodejs.org/en/blog/release/v14.14.0" rel="noopener noreferrer">14.14</a>.</p>
+<ul>
+<li>impl @rafaeelaudibert <a href="https://github.com/axodotdev/cargo-dist/pull/2350" rel="noopener noreferrer">chore(npm): replace axios with native node:http/node:https</a></li>
+</ul>
+<h2>cargo-zigbuild and cargo-auditable</h2>
+<p>It's now possible to use cargo-auditable together with cross-compilation via cargo-zigbuild. In previous versions of dist, these two features were mutually exclusive.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/2318" rel="noopener noreferrer">feat(auditable): remove zigbuild limitation</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>impl @eegli <a href="https://github.com/axodotdev/cargo-dist/pull/2313" rel="noopener noreferrer">fix: double escape windows path in receipt</a></li>
+<li>impl @woodruffw <a href="https://github.com/axodotdev/cargo-dist/pull/2392" rel="noopener noreferrer">ps1: peek the inner exception on download failure</a></li>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/2357" rel="noopener noreferrer">feat(ci): migrate from attest-build-provenance@v3 to attest@v4</a></li>
+<li>impl @OpenSauce <a href="https://github.com/axodotdev/cargo-dist/pull/2322" rel="noopener noreferrer">chore(deps): bump github actions</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.32.0-tinymist.2 (2026-05-21)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.2</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.2</guid><content:encoded><![CDATA[<p>This release contains several bugfixes and an update to the npm installer to reduce its dependencies. It also updates the default versions of all GitHub actions.</p>
+<h2>npm installer</h2>
+<p>The npm installer now relies on builtin node modules in place of the external axios and rimraf libraries. In order to support this, we've raised the minimum supported node version to <a href="https://nodejs.org/en/blog/release/v14.14.0" rel="noopener noreferrer">14.14</a>.</p>
+<ul>
+<li>impl @rafaeelaudibert <a href="https://github.com/axodotdev/cargo-dist/pull/2350" rel="noopener noreferrer">chore(npm): replace axios with native node:http/node:https</a></li>
+</ul>
+<h2>cargo-zigbuild and cargo-auditable</h2>
+<p>It's now possible to use cargo-auditable together with cross-compilation via cargo-zigbuild. In previous versions of dist, these two features were mutually exclusive.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/2318" rel="noopener noreferrer">feat(auditable): remove zigbuild limitation</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>impl @eegli <a href="https://github.com/axodotdev/cargo-dist/pull/2313" rel="noopener noreferrer">fix: double escape windows path in receipt</a></li>
+<li>impl @woodruffw <a href="https://github.com/axodotdev/cargo-dist/pull/2392" rel="noopener noreferrer">ps1: peek the inner exception on download failure</a></li>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/2357" rel="noopener noreferrer">feat(ci): migrate from attest-build-provenance@v3 to attest@v4</a></li>
+<li>impl @OpenSauce <a href="https://github.com/axodotdev/cargo-dist/pull/2322" rel="noopener noreferrer">chore(deps): bump github actions</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.32.0-tinymist.1 (2026-06-19)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.1</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.32.0-tinymist.1</guid><content:encoded><![CDATA[<p>This tinymist fork release rebases the fork on cargo-dist 0.32.0 while preserving tinymist-specific build support.</p>
+<h2>Fixes</h2>
+<ul>
+<li>Keep the tinymist LoongArch/cross build support on top of cargo-dist 0.32.0.</li>
+<li>Support dispatching release workflows through <code>workflow_call</code> with a <code>targets</code> input.</li>
+<li>Filter the GitHub local-artifacts matrix by the requested dispatch targets so tinymist CI can avoid building unrelated platforms.</li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.6-tinymist.3 (2025-06-09)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.6-tinymist.3</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.6-tinymist.3</guid><content:encoded><![CDATA[<p>Nothing Yet!</p>
+]]></content:encoded></item><item><title>Version 0.28.6-tinymist.2 (2025-06-09)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.6-tinymist.2</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.6-tinymist.2</guid><content:encoded><![CDATA[<p>Nothing Yet!</p>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.8 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.8</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.8</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor @DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl @DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>@mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.7 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.7</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.7</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor @DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl @DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>@mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.6 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.6</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.6</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor @DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl @DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>@mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.5 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.5</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.5</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor @DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl @DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>@mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.4 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.4</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.4</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor @DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl @DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>@mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.28.0-tinymist.2 (2025-01-08)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.2</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.28.0-tinymist.2</guid><content:encoded><![CDATA[<p>This release contains a new feature that improves the Windows PowerShell installer. We've also made some behind-the-scenes changes which most users won't notice yet - keep an eye out for our next major release!</p>
+<h2>PowerShell improvements</h2>
+<p>While we've always updated the user's <code>Path</code> variable for them, in the past the user had to reboot their system for the change to be reflected or temporarily add the installation directory to the <code>Path</code> themselves. Starting in 0.28.0, we now only require you to restart your shell for the change to take effect, not the entire system. We've also made improvements to our handling of this variable to better support users whose <code>Path</code> contained variable expansions.</p>
+<p>Thanks to open source contributor @DavisVaughan, who did extensive research as well as writing the feature!</p>
+<ul>
+<li>impl @DavisVaughan <a href="https://github.com/axodotdev/cargo-dist/pull/1658" rel="noopener noreferrer">Rework Add-Path to avoid expanding and request an environment refresh</a></li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>@mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1681" rel="noopener noreferrer">Properly support installing apt packages from the default cargo-xwin builder</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.26.1-tinymist.6 (2024-12-12)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.26.1-tinymist.6</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.26.1-tinymist.6</guid><content:encoded><![CDATA[<p>This is a bugfix release which fixes an issue where aarch64 Windows cross-compilation wouldn't work out of the box. We've updated the default configuration to ensure that this target just works without additional configuration.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1635" rel="noopener noreferrer">fix: always cross-compile to windows via xwin</a></li>
+</ul>
+]]></content:encoded></item><item><title>Version 0.26.1-tinymist.5 (2024-12-12)</title><link>http://127.0.0.1:7979/cargo-dist/changelog/v0.26.1-tinymist.5</link><category domain="https://github.com/Myriad-Dreamin/cargo-dist">cargo-dist Changelog</category><guid>http://127.0.0.1:7979/cargo-dist/changelog/v0.26.1-tinymist.5</guid><content:encoded><![CDATA[<p>This is a bugfix release which fixes an issue where aarch64 Windows cross-compilation wouldn't work out of the box. We've updated the default configuration to ensure that this target just works without additional configuration.</p>
+<ul>
+<li>impl @mistydemeo <a href="https://github.com/axodotdev/cargo-dist/pull/1635" rel="noopener noreferrer">fix: always cross-compile to windows via xwin</a></li>
+</ul>
+]]></content:encoded></item></channel></rss>
