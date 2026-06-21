@@ -329,8 +329,9 @@ jobs:
       {{%- if cache_builds %}}
       - uses: {{{actions["swatinem/rust-cache"] | safe }}}
         with:
-          key: ${{ join(matrix.targets, '-') }}
+          shared-key: ${{ join(matrix.targets, '-') }}
           cache-provider: ${{ matrix.cache_provider }}
+          save-if: ${{ github.ref == 'refs/heads/main' }}
       {{%- endif %}}
       - name: Install dist
         run: ${{ matrix.install_dist.run }}

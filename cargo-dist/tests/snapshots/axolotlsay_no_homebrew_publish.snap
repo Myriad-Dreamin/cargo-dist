@@ -3744,8 +3744,9 @@ jobs:
           fi
       - uses: swatinem/rust-cache@v2
         with:
-          key: ${{ join(matrix.targets, '-') }}
+          shared-key: ${{ join(matrix.targets, '-') }}
           cache-provider: ${{ matrix.cache_provider }}
+          save-if: ${{ github.ref == 'refs/heads/main' }}
       - name: Install dist
         run: ${{ matrix.install_dist.run }}
       # Get the dist-manifest
